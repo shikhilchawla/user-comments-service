@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/comments")
+@RequestMapping("/api/comments/")
 public class UserCommentsResource {
 
     private final UserCommentsService userCommentsService;
@@ -17,12 +17,12 @@ public class UserCommentsResource {
         this.userCommentsService = userCommentsService;
     }
 
-    @GetMapping("/health")
+    @GetMapping("health")
     public ResponseEntity<String> healthCheck() {
         return ResponseEntity.ok("User comments Service is Healthy");
     }
 
-    @GetMapping("/post/{postId}")
+    @GetMapping("post/{postId}")
     public ResponseEntity<List<Comment>> getCommentsByPostId(@PathVariable int postId) {
         return ResponseEntity.ok().body(this.userCommentsService.getUserCommentsByPostId(postId));
     }
